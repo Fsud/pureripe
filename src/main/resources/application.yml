@@ -1,0 +1,30 @@
+#server:
+#    port: 9876
+#    address: 127.0.0.1
+#spring:
+#    # HTTP ENCODING
+#    http:
+#        encoding.charset: UTF-8
+#        encoding.enable: true
+#        encoding.force: true
+##    mvc:
+##        view.prefix: /static
+##        view.suffix: .vm
+#    datasource:
+#        driverClass: com.mysql.jdbc.Driver
+#        url: jdbc:mysql://127.0.0.1:3306/pure?useUnicode=true&characterEncoding=utf-8
+#        username: root
+#        password: 123456
+#    mybatis:
+#      mapperLocations: "classpath:/mapper/*Mapper.xml"
+#      typeAliasesPackage: "com.fankun.pureRipe.entity"
+#    velocity:
+#      resource-loader-path: classpath:/static
+#      suffix: .vm
+#
+#    redisConfig:
+#      url: redis://127.0.0.1:6379
+#      maxTotal: 100
+#      maxIdle: 10
+#      maxWaitMillis: 10000
+#      testOnBorrow: true

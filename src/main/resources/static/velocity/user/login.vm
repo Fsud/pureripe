@@ -1,0 +1,37 @@
+<html>
+<head>
+    <style>
+        .col-center-block {
+            float: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row myCenter">
+            <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+                <form method="post" action="/login">
+                    #if(${loginError})
+                        <ul class="form-return">
+                            <li>${loginError}"</li>
+                        </ul>
+                    #end
+                    <div class="form-group">
+                        <label for="name">username</label>
+                        <input type="text" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">password</label>
+                        <input type="password" name="password">
+                    </div>
+                    <button class="btn btn-default" type="submit" value="login">login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

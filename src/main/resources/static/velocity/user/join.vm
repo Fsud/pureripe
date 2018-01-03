@@ -1,0 +1,32 @@
+<html>
+<body>
+<div class="container">
+    <form role="form" id="signUpForm" method="post" action="/join">
+        <fieldset>
+        <div class="form-group">
+            <label for="name">username</label>
+            <input type="text" name="userName" maxlength="10" minlength="3" required>
+        </div>
+        <div class="form-group">
+            <label for="name">email</label>
+            <input type="email" name="email" maxlength="30" minlength="3" remote="/join/emailCheck" required>
+        </div>
+        <div class="form-group">
+            <label for="name">password</label>
+            <input type="password" name="password" maxlength="10" minlength="3" required>
+        </div>
+
+        <input class="btn btn-default" type="submit" value="login"></input>
+        </fieldset>
+    </form>
+</div>
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script>
+    $().ready(function() {
+        $("#signUpForm").validate();
+    });
+</script>
+</body>
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</html>

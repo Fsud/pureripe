@@ -1,0 +1,29 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/simplemde.min.css">
+    <script src="/js/simplemde.min.js"></script>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <!-- 包括所有已编译的插件 -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <form role="form" id="addSubject" method="post" action="/cm/addSubject">
+        <div class="row"><textarea id="subject" name="subject" rows="1" class="form-control" autofocus="autofocus" maxlength="30" required></textarea></div>
+        <div class="row"><textarea id="content" name="content" required></textarea></div>
+        <div class="row"><input type="submit" class="btn btn-danger btn-block"></input></div>
+    </form>
+</div>
+</body>
+<script>
+    new SimpleMDE({
+        element: document.getElementById("content"),
+        spellChecker: false,
+    });
+    $().ready(function() {
+        $("#addSubject").validate();
+    });
+</script>
+</html>
