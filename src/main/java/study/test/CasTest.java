@@ -23,4 +23,9 @@ public class CasTest {
                 }
             }
         }
+
+    public static void main(String[] args) throws Exception{
+
+        System.out.println(CasTest.class.getResource("/").getFile());
+    }
 }
