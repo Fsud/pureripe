@@ -52,6 +52,22 @@ public class NIOServer {
                     clientChannel.configureBlocking(false);
                     clientChannel.register(key.selector(), SelectionKey.OP_READ, ByteBuffer.allocate(Buffer_Size));
                 }
+                if(key.isWritable()){
+                    SocketChannel clientChannel = (SocketChannel) key.channel();
+
+                    // 得到并重置缓冲区的主要索引值
+                    ByteBuffer buffer = (ByteBuffer) key.attachment();
+                    // 准备发送的文本
+                    String sendString = "hehe";
+
+                    // 将要发送的字符串编码(使用Charset进行编码)后再进行包装
+                    buffer = ByteBuffer.wrap(sendString.getBytes(LocalCharsetName));
+
+                    // 发送回去
+                    clientChannel.write(buffer);
+
+                    key.interestOps(SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+                }
 
                 // 客户端有写入时
                 if (key.isReadable()) {
