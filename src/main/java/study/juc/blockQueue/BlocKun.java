@@ -5,6 +5,8 @@ import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * 使用了wait和notifyAll实现的简单阻塞队列。
+ *
  * Created by fankun on 2017/10/24.
  */
 public class BlocKun<T> {

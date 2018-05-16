@@ -1,6 +1,5 @@
 package com.fankun.pureRipe.controller;
 
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
@@ -52,6 +51,15 @@ public class CommunityController extends BaseController {
         return "cm/index";
     }
 
+    @RequestMapping(value ="/{pageNum}/cache",method = RequestMethod.GET)
+    public String indexcache(Model model,@PathVariable Long pageNum){
+        Page<Post> posts = communityService.listSubjectsByCache(pageNum);
+        model.addAttribute("listSubjects",posts);
+        model.addAttribute("pageNum",pageNum);
+        model.addAttribute("totalPage",posts.getPages());
+        return "cm/index";
+    }
+
     @RequestMapping(value = "/addSubject",method = RequestMethod.GET)
     public String addSubject(Model model){
         return "cm/newSubject";
@@ -83,16 +91,7 @@ public class CommunityController extends BaseController {
         return "cm/subjectDetail";
     }
 
-    public static void main(String[] args) {
 
-//        Hashtable h = new Hashtable();
-//        h.put(1,null);
-        //h.put(null,2);
-
-        Hashtable m = new Hashtable();
-        m.put(3,null);
-        System.out.println(m.get(3));
-    }
 
     @RequestMapping(value = "/editSubject/{postId}",method = RequestMethod.GET)
     public String editSubject(Model model, @PathVariable String postId){
@@ -131,4 +130,5 @@ public class CommunityController extends BaseController {
         map.put("status",1);
         return map;
     }
+
 }

@@ -23,7 +23,7 @@ public class FutureTask {
 
             ListenableFuture<String> future1 = listeningExecutor.submit(new Callable<String>() {
                 public String call() throws Exception {
-                    Thread.sleep(1000);
+                    Thread.sleep(10000);
                     System.out.println("aaa");
                     return "this is result";
                 }
@@ -46,11 +46,10 @@ public class FutureTask {
 
                 @Override
                 public void onFailure(Throwable throwable) {
-                    System.out.println("callback ...");
+                    System.out.println("callback nonono");
                 }
             });
 
-            Thread.sleep(10);
             System.out.println("start --- ");
             System.out.println("future print:" + future1.get());
 

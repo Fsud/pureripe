@@ -24,4 +24,6 @@ public interface CommunityService {
     List<Reply> getReplysByPostId(String postId);
 
     Long getTotalPage();
+
+    Page<Post> listSubjectsByCache(Long pageNum);
 }
