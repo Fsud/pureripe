@@ -1,5 +1,8 @@
 package study.designPatterns.proxy.jdkproxy;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -29,6 +32,7 @@ public class BTimeView implements InvocationHandler {
         if(method.getName().equals("printTime")){
             System.out.println("___B___B___B___");
         }
+        System.out.println(proxy.getClass().getName());
         return method.invoke(timeView,args);
     }
 

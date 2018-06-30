@@ -2,6 +2,7 @@ package study.designPatterns.proxy;
 
 import study.designPatterns.proxy.cglib.TimeCglib;
 import study.designPatterns.proxy.jdkproxy.BTimeView;
+import study.designPatterns.proxy.jdkproxy.EiEi;
 import study.designPatterns.proxy.jdkproxy.TimeView;
 
 import java.lang.reflect.InvocationHandler;
@@ -18,13 +19,14 @@ import org.springframework.cglib.proxy.MethodProxy;
 public class Test {
     void testJDK(){
         InvocationHandler invocationHandler = new BTimeView(()-> System.out.println(System.currentTimeMillis()));
-        TimeView timeView = (TimeView)Proxy.newProxyInstance(getClass().getClassLoader(),new Class[]{TimeView.class},invocationHandler);
+        TimeView timeView = (TimeView)Proxy.newProxyInstance(getClass().getClassLoader(),new Class[]{TimeView.class, EiEi.class},invocationHandler);
         timeView.printTime();
     }
 
     void testCGLIB(){
         MethodInterceptor methodInterceptor =(Object obj, Method method, Object[] args, MethodProxy proxy)->{
             if(method.getName().equals("printTime")){
+
                 System.out.println("___B___B___B___");
             }
             return proxy.invokeSuper(obj,args);
@@ -42,6 +44,6 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        new Test().testCGLIB();
+        new Test().testJDK();
     }
 }

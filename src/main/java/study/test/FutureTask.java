@@ -23,8 +23,8 @@ public class FutureTask {
 
             ListenableFuture<String> future1 = listeningExecutor.submit(new Callable<String>() {
                 public String call() throws Exception {
-                    Thread.sleep(10000);
-                    System.out.println("aaa");
+                    Thread.sleep(1000);
+                    System.out.println(Thread.currentThread().getName().toString()+"aaa");
                     return "this is result";
                 }
             });
@@ -32,7 +32,7 @@ public class FutureTask {
             ListenableFutureTask<String> futureTask = ListenableFutureTask.create(new Callable<String>() {
                 public String call() throws Exception {
                     Thread.sleep(1000);
-                    System.out.println("aaa");
+                    System.out.println(Thread.currentThread().getName().toString()+"aaa");
                     return "this is result";
                 }
             });
@@ -41,7 +41,7 @@ public class FutureTask {
             Futures.addCallback(future1, new FutureCallback<String>() {
                 @Override
                 public void onSuccess(String s) {
-                    System.out.println("callback hahaha");
+                    System.out.println(Thread.currentThread().getName().toString()+"callback hahaha");
                 }
 
                 @Override
@@ -50,8 +50,8 @@ public class FutureTask {
                 }
             });
 
-            System.out.println("start --- ");
-            System.out.println("future print:" + future1.get());
+            System.out.println(Thread.currentThread().getName().toString()+"start --- ");
+            System.out.println(Thread.currentThread().getName().toString()+"future print:" + future1.get());
 
 //            System.out.println(Runtime.getRuntime().availableProcessors());
 
